@@ -22,4 +22,16 @@ class RectangleTest {
         Rectangle rectangle = new Rectangle(2, 0);
         assertEquals(0, rectangle.area());
     }
+
+    @Test
+    void perimeter() {
+        Rectangle rectangle = new Rectangle(2, 3);
+        assertEquals(10, rectangle.perimeter());
+    }
+
+    @Test
+    void perimeterWhenLengthAndBreathAreEqual() {
+        Rectangle rectangle = new Rectangle(2, 2);
+        assertEquals(8, rectangle.perimeter());
+    }
 }
