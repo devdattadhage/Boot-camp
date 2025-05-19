@@ -6,38 +6,39 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProbabilityTest {
     @Test
-    void createProbability() throws Exception {
-        Probability probability = Probability.createProbability(0.5);
-        assertInstanceOf(Probability.class, probability);
+    void create() throws Exception {
+        Probability chancesOfGettingTail = Probability.create(0.5);
+        assertInstanceOf(Probability.class, chancesOfGettingTail);
     }
 
     @Test
     void invalidProbability() throws Exception {
-        Exception exception = assertThrows(Exception.class, () -> Probability.createProbability(2));
+        Exception exception = assertThrows(Exception.class, () -> Probability.create(2));
         assertEquals("Invalid Probability", exception.getMessage());
     }
 
     @Test
-    void compliment() throws Exception {
-        Probability probability = Probability.createProbability(0.5);
-        assertInstanceOf(Probability.class, probability.compliment());
+    void not() throws Exception {
+        Probability chancesOfGettingTail = Probability.create(0.2);
+        assertInstanceOf(Probability.class, chancesOfGettingTail.not());
+        assertEquals(chancesOfGettingTail.not(), Probability.create(0.8));
     }
 
     @Test
-    void addTwoProbability() throws Exception {
-        Probability p1 = Probability.createProbability(0.5);
-        Probability p2 = Probability.createProbability(0.5);
-        Probability p3 = p1.add(p2);
+    void andTwoProbability() throws Exception {
+        Probability p1 = Probability.create(0.5);
+        Probability p2 = Probability.create(0.5);
+        Probability p3 = p1.and(p2);
 
-        assertEquals(p3, Probability.createProbability(0.25));
+        assertEquals(p3, Probability.create(0.25));
     }
 
     @Test
-    void atLeastOneTail() throws Exception {
-        Probability p1 = Probability.createProbability(0.5);
-        Probability p2 = Probability.createProbability(0.5);
-        Probability p3 = p1.atLeastOne(p2);
+    void orTail() throws Exception {
+        Probability p1 = Probability.create(0.5);
+        Probability p2 = Probability.create(0.5);
+        Probability p3 = p1.or(p2);
 
-        assertEquals(p3, Probability.createProbability(0.75));
+        assertEquals(p3, Probability.create(0.75));
     }
 }
