@@ -9,10 +9,12 @@ public class Rectangle implements ClosedShape {
         this.breadth = breadth;
     }
 
+    @Override
     public int area() {
         return this.length * this.breadth;
     }
 
+    @Override
     public int perimeter() {
         return 2 * (this.length + this.breadth);
     }
