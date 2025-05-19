@@ -1,6 +1,6 @@
 package com.tw.step.model;
 
-public class Rectangle {
+public class Rectangle implements ClosedShape {
     private final int length;
     private final int breadth;
 
