@@ -35,4 +35,8 @@ public class Probability {
     public int hashCode() {
         return Objects.hashCode(chance);
     }
+
+    public Probability atLeastOne(Probability p2) {
+        return new Probability(this.chance + p2.chance - (this.chance * p2.chance));
+    }
 }

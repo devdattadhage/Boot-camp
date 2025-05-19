@@ -1,7 +1,6 @@
 package com.tw.step.probability;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,6 +29,15 @@ class ProbabilityTest {
         Probability p2 = Probability.createProbability(0.5);
         Probability p3 = p1.add(p2);
 
-        assertTrue(p3.equals(Probability.createProbability(0.25)));
+        assertEquals(p3, Probability.createProbability(0.25));
+    }
+
+    @Test
+    void atLeastOneTail() throws Exception {
+        Probability p1 = Probability.createProbability(0.5);
+        Probability p2 = Probability.createProbability(0.5);
+        Probability p3 = p1.atLeastOne(p2);
+
+        assertEquals(p3, Probability.createProbability(0.75));
     }
 }
